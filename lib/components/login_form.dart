@@ -19,7 +19,7 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           children: <Widget>[
             TextFormField(
-              decoration: const InputDecoration(hintText: 'Email'),
+              decoration: const InputDecoration(hintText: 'Email Address'),
             ),
             const SizedBox(
               height: 16.0,

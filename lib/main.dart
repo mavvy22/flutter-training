@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasknaut_mobile/screens/login_page.dart';
+import 'package:tasknaut_mobile/screens/main_page.dart';
 import 'package:tasknaut_mobile/screens/registration_page.dart';
 
 void main() {
@@ -30,14 +31,17 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
+            secondary: const Color.fromARGB(255, 255, 214, 34)),
         useMaterial3: true,
       ),
       home: const LoginPage(),
       initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginPage(),
-        '/registration': (context) => const RegistrationPage()
+        '/registration': (context) => const RegistrationPage(),
+        '/main': (context) => const MainPage()
       },
     );
   }
