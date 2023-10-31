@@ -3,14 +3,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:tasknaut_mobile/constants.dart';
 
-String login = """
-  mutation login(\$input: LoginInput!) {
-    login(input: \$input) {
-      token
-    }
-  }
-""";
-
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
 
@@ -29,14 +21,15 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Mutation(
       options: MutationOptions(
-        document: gql(login),
+        document: gql(kLoginGql),
         onCompleted: (data) {
           String? token = data?['login']['token'];
           if (token == null) {
             return;
           }
           storage.setItem(kStorageItemName, token);
-          Navigator.pushReplacementNamed(context, '/bootstrap');
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/bootstrap', (route) => false);
         },
       ),
       builder: (RunMutation runMutation, result) {

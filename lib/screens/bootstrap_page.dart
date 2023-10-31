@@ -4,22 +4,13 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:tasknaut_mobile/constants.dart';
 
-String myProfile = """
-   query myProfile {
-     myProfile {
-       id
-       username
-     }
-   }
-""";
-
 class BootstrapPage extends HookWidget {
   const BootstrapPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final myProfileResult = useQuery(QueryOptions(
-        document: gql(myProfile), fetchPolicy: FetchPolicy.networkOnly));
+        document: gql(kMyProfileGql), fetchPolicy: FetchPolicy.networkOnly));
     final result = myProfileResult.result;
 
     LocalStorage storage = LocalStorage(kStorageKey);
@@ -34,12 +25,12 @@ class BootstrapPage extends HookWidget {
 
     if (result.hasException == true) {
       storage.deleteItem(kStorageItemName);
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
     }
 
     if (result.data != null) {
       Future.delayed(const Duration(seconds: 3)).then((value) {
-        Navigator.pushReplacementNamed(context, '/main');
+        Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
       });
     }
 
