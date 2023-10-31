@@ -28,8 +28,15 @@ class LoginPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: Column(children: <Widget>[
-        const LoginForm(),
+      body: Column(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
+        const CircleAvatar(
+          foregroundImage: AssetImage('assets/logo-nobg.png'),
+          radius: 100,
+        ),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(50, 80, 50, 10),
+          child: LoginForm(),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -38,7 +45,13 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/registration');
                 },
-                child: const Text('Register'))
+                child: Text('Register',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ))),
+            const SizedBox(
+              height: 150.0,
+            )
           ],
         )
       ]),

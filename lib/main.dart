@@ -37,11 +37,15 @@ class MyApp extends StatelessWidget {
     return GraphQLProvider(
         client: client,
         child: MaterialApp(
+          // darkTheme: ThemeData.dark(useMaterial3: true),
           title: 'Flutter Demo',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.deepPurple,
-                secondary: const Color.fromARGB(255, 255, 214, 34)),
+                background: const Color.fromARGB(221, 16, 2, 45),
+                seedColor: const Color.fromARGB(255, 66, 36, 118),
+                secondary: const Color.fromARGB(255, 255, 166, 0),
+                surface: Colors.black87),
+            textTheme: Typography.whiteHelsinki,
             useMaterial3: true,
           ),
           home: const LoginPage(),

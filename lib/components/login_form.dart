@@ -22,6 +22,16 @@ class _LoginFormState extends State<LoginForm> {
     return Mutation(
       options: MutationOptions(
         document: gql(kLoginGql),
+        onError: (error) {
+          showDialog(
+              context: context,
+              builder: (BuildContext ctx) {
+                return const AlertDialog(
+                  title: Text('Login failed'),
+                  content: Text('Invalid email or password'),
+                );
+              });
+        },
         onCompleted: (data) {
           String? token = data?['login']['token'];
           if (token == null) {
@@ -38,7 +48,15 @@ class _LoginFormState extends State<LoginForm> {
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  decoration: const InputDecoration(hintText: 'Email Address'),
+                  validator: (value) {
+                    if (value != null && value.contains('@')) {
+                      return null;
+                    }
+                    return 'Invalid email';
+                  },
+                  decoration: const InputDecoration(
+                      hintText: 'Email Address',
+                      hintStyle: TextStyle(color: Colors.white54)),
                   onSaved: (newValue) {
                     _email = newValue!;
                   },
@@ -47,8 +65,17 @@ class _LoginFormState extends State<LoginForm> {
                   height: 16.0,
                 ),
                 TextFormField(
+                  validator: (value) {
+                    if (value != null && value != '') {
+                      return null;
+                    }
+                    return 'Invalid Password';
+                  },
                   obscureText: true,
-                  decoration: const InputDecoration(hintText: 'Password'),
+                  decoration: const InputDecoration(
+                    hintText: 'Password',
+                    hintStyle: TextStyle(color: Colors.white54),
+                  ),
                   onSaved: (newValue) {
                     _password = newValue!;
                   },
