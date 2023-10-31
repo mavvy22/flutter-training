@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:tasknaut_mobile/constants.dart';
 
 String login = """
   mutation login(\$input: LoginInput!) {
@@ -19,7 +20,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final LocalStorage storage = LocalStorage('tasknaut.json');
+  final LocalStorage storage = LocalStorage(kStorageKey);
 
   String _email = '';
   String _password = '';
@@ -34,7 +35,7 @@ class _LoginFormState extends State<LoginForm> {
           if (token == null) {
             return;
           }
-          storage.setItem('token', token);
+          storage.setItem(kStorageItemName, token);
           Navigator.pushReplacementNamed(context, '/bootstrap');
         },
       ),

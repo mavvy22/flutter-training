@@ -1,15 +1,16 @@
 import "package:flutter/material.dart";
 import "package:localstorage/localstorage.dart";
 import "package:tasknaut_mobile/components/login_form.dart";
+import "package:tasknaut_mobile/constants.dart";
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    LocalStorage storage = LocalStorage('tasknaut.json');
+    LocalStorage storage = LocalStorage(kStorageKey);
 
-    dynamic token = storage.getItem('token');
+    dynamic token = storage.getItem(kStorageItemName);
 
     if (token != null) {
       Future.delayed(const Duration(seconds: 1)).then((value) {

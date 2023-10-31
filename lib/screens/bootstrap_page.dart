@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:tasknaut_mobile/constants.dart';
 
 String myProfile = """
    query myProfile {
@@ -21,7 +22,7 @@ class BootstrapPage extends HookWidget {
         document: gql(myProfile), fetchPolicy: FetchPolicy.networkOnly));
     final result = myProfileResult.result;
 
-    LocalStorage storage = LocalStorage('tasknaut.json');
+    LocalStorage storage = LocalStorage(kStorageKey);
 
     if (result.isLoading == true) {
       return const Scaffold(
@@ -32,7 +33,7 @@ class BootstrapPage extends HookWidget {
     }
 
     if (result.hasException == true) {
-      storage.deleteItem('token');
+      storage.deleteItem(kStorageItemName);
       Navigator.pushReplacementNamed(context, '/login');
     }
 
