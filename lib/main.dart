@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:tasknaut_mobile/screens/bootstrap_page.dart';
 import 'package:tasknaut_mobile/screens/login_page.dart';
 import 'package:tasknaut_mobile/screens/main_page.dart';
 import 'package:tasknaut_mobile/screens/registration_page.dart';
@@ -16,9 +18,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    LocalStorage storage = LocalStorage('tasknaut.json');
     HttpLink httpLink = HttpLink('http://localhost:4000/graphql');
 
-    AuthLink authLink = AuthLink(getToken: () => '');
+    AuthLink authLink = AuthLink(getToken: () {
+      dynamic token = storage.getItem('token');
+      if (token != null) {
+        return 'Bearer $token';
+      }
+      return null;
+    });
 
     Link link = authLink.concat(httpLink);
 
@@ -55,7 +64,8 @@ class MyApp extends StatelessWidget {
           routes: {
             '/login': (context) => const LoginPage(),
             '/registration': (context) => const RegistrationPage(),
-            '/main': (context) => const MainPage()
+            '/main': (context) => const MainPage(),
+            '/bootstrap': (context) => const BootstrapPage()
           },
         ));
   }

@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:localstorage/localstorage.dart';
 
 String login = """
   mutation login(\$input: LoginInput!) {
@@ -19,6 +19,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final LocalStorage storage = LocalStorage('tasknaut.json');
 
   String _email = '';
   String _password = '';
@@ -29,9 +30,12 @@ class _LoginFormState extends State<LoginForm> {
       options: MutationOptions(
         document: gql(login),
         onCompleted: (data) {
-          if (kDebugMode) {
-            print(data?['login']['token']);
+          String? token = data?['login']['token'];
+          if (token == null) {
+            return;
           }
+          storage.setItem('token', token);
+          Navigator.pushReplacementNamed(context, '/bootstrap');
         },
       ),
       builder: (RunMutation runMutation, result) {

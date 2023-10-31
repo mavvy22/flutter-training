@@ -12,7 +12,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   String _email = '';
 
   void onPressed() {
-    final isValid = _formKey.currentState!.validate();
+    bool isValid = _formKey.currentState!.validate();
     if (isValid) {
       Navigator.pushReplacementNamed(context, '/main');
     }
