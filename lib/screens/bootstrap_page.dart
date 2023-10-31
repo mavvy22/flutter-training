@@ -3,9 +3,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:tasknaut_mobile/constants.dart';
+import 'package:tasknaut_mobile/screens/login_page.dart';
+import 'package:tasknaut_mobile/screens/main_page.dart';
 
 class BootstrapPage extends HookWidget {
   const BootstrapPage({super.key});
+  static const routeName = '/bootstrap';
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +28,14 @@ class BootstrapPage extends HookWidget {
 
     if (result.hasException == true) {
       storage.deleteItem(kStorageItemName);
-      Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, LoginPage.routeName, (route) => false);
     }
 
     if (result.data != null) {
       Future.delayed(const Duration(seconds: 3)).then((value) {
-        Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
+        Navigator.pushNamedAndRemoveUntil(
+            context, MainPage.routeName, (route) => false);
       });
     }
 

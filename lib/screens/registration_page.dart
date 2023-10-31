@@ -3,6 +3,7 @@ import 'package:tasknaut_mobile/components/registration_form.dart';
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({super.key});
+  static const routeName = '/registration';
 
   @override
   Widget build(BuildContext context) {

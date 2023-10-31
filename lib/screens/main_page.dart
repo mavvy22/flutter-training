@@ -5,6 +5,7 @@ import 'package:tasknaut_mobile/screens/tasks_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
+  static const routeName = '/main';
 
   @override
   State<MainPage> createState() => _MainPage();
