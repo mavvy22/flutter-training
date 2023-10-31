@@ -17,12 +17,13 @@ class BootstrapPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myProfileResult = useQuery(QueryOptions(document: gql(myProfile)));
+    final myProfileResult = useQuery(QueryOptions(
+        document: gql(myProfile), fetchPolicy: FetchPolicy.networkOnly));
     final result = myProfileResult.result;
 
     LocalStorage storage = LocalStorage('tasknaut.json');
 
-    if (result.isLoading) {
+    if (result.isLoading == true) {
       return const Scaffold(
         body: Center(
           child: Text('Loading...'),
@@ -30,7 +31,7 @@ class BootstrapPage extends HookWidget {
       );
     }
 
-    if (result.hasException) {
+    if (result.hasException == true) {
       storage.deleteItem('token');
       Navigator.pushReplacementNamed(context, '/login');
     }
