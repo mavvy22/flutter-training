@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:tasknaut_mobile/components/styled_text_field.dart';
 import 'package:tasknaut_mobile/constants.dart';
 
 class LoginForm extends StatefulWidget {
@@ -47,16 +48,14 @@ class _LoginFormState extends State<LoginForm> {
             key: _formKey,
             child: Column(
               children: <Widget>[
-                TextFormField(
+                StyledTextField(
                   validator: (value) {
                     if (value != null && value.contains('@')) {
                       return null;
                     }
                     return 'Invalid email';
                   },
-                  decoration: const InputDecoration(
-                      hintText: 'Email Address',
-                      hintStyle: TextStyle(color: Colors.white54)),
+                  hintText: 'Email Address',
                   onSaved: (newValue) {
                     _email = newValue!;
                   },
@@ -64,7 +63,7 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(
                   height: 16.0,
                 ),
-                TextFormField(
+                StyledTextField(
                   validator: (value) {
                     if (value != null && value != '') {
                       return null;
@@ -72,10 +71,7 @@ class _LoginFormState extends State<LoginForm> {
                     return 'Invalid Password';
                   },
                   obscureText: true,
-                  decoration: const InputDecoration(
-                    hintText: 'Password',
-                    hintStyle: TextStyle(color: Colors.white54),
-                  ),
+                  hintText: 'Password',
                   onSaved: (newValue) {
                     _password = newValue!;
                   },
