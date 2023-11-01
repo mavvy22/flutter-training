@@ -17,3 +17,11 @@ const kLoginGql = """
     }
   }
 """;
+
+const kRegistrationGql = """
+  mutation registerUser(\$input: RegisterUserInput!) {
+    registerUser(input: \$input) {
+      token
+    }
+  }
+""";

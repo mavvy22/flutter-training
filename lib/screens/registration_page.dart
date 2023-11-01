@@ -9,11 +9,18 @@ class RegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          centerTitle: false,
+          iconTheme: const IconThemeData(color: Colors.white70),
           title: const Text(
-        'Registration',
-      )),
+            'Registration',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.white70),
+          )),
       body: const Column(children: [
-        RegistrationForm(),
+        Padding(
+            padding: EdgeInsets.fromLTRB(30.0, 60.0, 30.0, 60.0),
+            child: RegistrationForm()),
       ]),
     );
   }
