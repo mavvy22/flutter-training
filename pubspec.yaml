@@ -38,6 +38,7 @@ dependencies:
   graphql_flutter: ^5.1.2
   localstorage: ^4.0.1+4
   flutter_hooks: ^0.18.6
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,8 @@ flutter:
   assets:
     - assets/logo.png
     - assets/logo-nobg.png
+    - assets/astronaut-anim-01.json
+    - assets/astronaut-anim-02.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

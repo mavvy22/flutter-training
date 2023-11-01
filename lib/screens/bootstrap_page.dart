@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tasknaut_mobile/constants.dart';
 import 'package:tasknaut_mobile/screens/login_page.dart';
 import 'package:tasknaut_mobile/screens/main_page.dart';
@@ -18,14 +19,6 @@ class BootstrapPage extends HookWidget {
 
     LocalStorage storage = LocalStorage(kStorageKey);
 
-    if (result.isLoading == true) {
-      return const Scaffold(
-        body: Center(
-          child: Text('Loading...'),
-        ),
-      );
-    }
-
     if (result.hasException == true) {
       storage.deleteItem(kStorageItemName);
       Navigator.pushNamedAndRemoveUntil(
@@ -38,10 +31,10 @@ class BootstrapPage extends HookWidget {
             context, MainPage.routeName, (route) => false);
       });
     }
-
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Redirecting...'),
+        child: SizedBox(
+            width: 200.0, child: Lottie.asset('assets/astronaut-anim-01.json')),
       ),
     );
   }
