@@ -50,3 +50,27 @@ const kCreateProjectGql = """
     }
   }
 """;
+
+const kMyProjectsGql = """
+  query myProjects {
+    myProjects {
+      id
+      name
+      tasks{
+        id
+        name
+        description
+        dueDate
+        status
+        assignee{
+          username
+          id
+        }
+      }
+      createdBy{
+        username
+        id
+      }
+    }
+  }
+""";

@@ -42,10 +42,12 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
                 background: const Color.fromARGB(255, 16, 2, 45),
-                seedColor: const Color.fromARGB(255, 66, 36, 118),
+                seedColor: const Color.fromARGB(255, 85, 0, 233),
                 secondary: const Color.fromARGB(255, 255, 166, 0),
                 surface: Colors.black87),
             textTheme: Typography.whiteHelsinki,
+            cardTheme:
+                const CardTheme(color: Color.fromARGB(17, 255, 255, 255)),
             navigationBarTheme: const NavigationBarThemeData(
                 labelTextStyle:
                     MaterialStatePropertyAll(TextStyle(color: Colors.white70))),

@@ -35,7 +35,7 @@ class _MainPage extends State<MainPage> {
       return Colors.pink;
     }
     if (index == _selectedIndex && index == 2) {
-      return Colors.yellow;
+      return Colors.deepOrangeAccent;
     }
     return Colors.white70;
   }
@@ -67,7 +67,15 @@ class _MainPage extends State<MainPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [CreateProjectForm(ctx: ctx)],
+                  children: [
+                    const Row(children: [
+                      Text(
+                        'Create Project',
+                        style: TextStyle(color: Colors.white70, fontSize: 20),
+                      )
+                    ]),
+                    CreateProjectForm(ctx: ctx)
+                  ],
                 ),
               ));
             });
@@ -85,7 +93,7 @@ class _MainPage extends State<MainPage> {
         body: _pages.elementAt(_selectedIndex),
         bottomNavigationBar: NavigationBar(
           backgroundColor: Theme.of(context).primaryColor,
-          indicatorColor: const Color.fromARGB(255, 56, 35, 120),
+          indicatorColor: const Color.fromARGB(255, 219, 219, 219),
           // unselectedItemColor: Theme.of(context).cardColor,
           selectedIndex: _selectedIndex,
           onDestinationSelected: _onTap,
