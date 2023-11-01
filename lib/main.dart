@@ -46,6 +46,9 @@ class MyApp extends StatelessWidget {
                 secondary: const Color.fromARGB(255, 255, 166, 0),
                 surface: Colors.black87),
             textTheme: Typography.whiteHelsinki,
+            navigationBarTheme: const NavigationBarThemeData(
+                labelTextStyle:
+                    MaterialStatePropertyAll(TextStyle(color: Colors.white70))),
             useMaterial3: true,
           ),
           home: const LoginPage(),

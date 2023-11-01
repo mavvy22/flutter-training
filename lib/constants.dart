@@ -1,5 +1,6 @@
 const kStorageKey = 'tasknaut.json';
 const kStorageItemName = 'token';
+const kBootstrapTransitionDuration = 3;
 
 const kMyProfileGql = """
    query myProfile {

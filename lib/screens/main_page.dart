@@ -26,24 +26,72 @@ class _MainPage extends State<MainPage> {
     });
   }
 
+  Color _createIconColor(index) {
+    if (index == _selectedIndex && index == 0) {
+      return Colors.blue;
+    }
+    if (index == _selectedIndex && index == 1) {
+      return Colors.pink;
+    }
+    if (index == _selectedIndex && index == 2) {
+      return Colors.yellow;
+    }
+    return Colors.white70;
+  }
+
+  Widget? _createFab() {
+    if (_selectedIndex == 2) {
+      return null;
+    }
+    if (_selectedIndex == 1) {
+      return FloatingActionButton.extended(
+        backgroundColor: Colors.pink,
+        onPressed: () {},
+        label: const Text('Task', style: TextStyle(color: Colors.white70)),
+        icon: const Icon(
+          Icons.add,
+          color: Colors.white70,
+        ),
+      );
+    }
+    return FloatingActionButton.extended(
+      backgroundColor: Colors.blue,
+      onPressed: () {},
+      label: const Text('Project'),
+      icon: const Icon(Icons.add),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: Theme.of(context).colorScheme.secondary,
-        unselectedItemColor: Theme.of(context).cardColor,
-        currentIndex: _selectedIndex,
-        onTap: _onTap,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.folder), label: 'Projects'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.web_stories), label: 'Tasks'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), label: 'Profile')
-        ],
-      ),
-    );
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: _createFab(),
+        body: _pages.elementAt(_selectedIndex),
+        bottomNavigationBar: NavigationBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          indicatorColor: const Color.fromARGB(255, 56, 35, 120),
+          // unselectedItemColor: Theme.of(context).cardColor,
+          selectedIndex: _selectedIndex,
+          onDestinationSelected: _onTap,
+          destinations: <Widget>[
+            NavigationDestination(
+              icon: Icon(Icons.folder, color: _createIconColor(0)),
+              label: 'Projects',
+            ),
+            NavigationDestination(
+                icon: Icon(
+                  Icons.web_stories,
+                  color: _createIconColor(1),
+                ),
+                label: 'Tasks'),
+            NavigationDestination(
+                icon: Icon(
+                  Icons.account_circle,
+                  color: _createIconColor(2),
+                ),
+                label: 'Profile')
+          ],
+        ));
   }
 }

@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:tasknaut_mobile/components/tab_layout.dart';
+import 'package:tasknaut_mobile/components/tab_title.dart';
 import 'package:tasknaut_mobile/constants.dart';
 
 class ProfilePage extends HookWidget {
   const ProfilePage({super.key});
-
-  _onLogout(context) {
-    LocalStorage storage = LocalStorage(kStorageKey);
-    storage.deleteItem(kStorageItemName);
-    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +16,25 @@ class ProfilePage extends HookWidget {
 
     final result = myProfileResult.result.data?['myProfile'];
     final username = result?['username'];
+    void onLogout() {
+      LocalStorage storage = LocalStorage(kStorageKey);
+      storage.deleteItem(kStorageItemName);
+      Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+    }
 
-    return Column(
+    return TabLayout(
+        child: Column(
       children: [
-        Text('Hello, $username'),
-        FilledButton(
-            style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.red)),
-            onPressed: () {
-              _onLogout(context);
-            },
-            child: const Text('Logout'))
+        TabTitle(title: 'Hello, $username'),
+        Row(children: [
+          Expanded(
+              child: FilledButton(
+                  style: const ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(Colors.red)),
+                  onPressed: onLogout,
+                  child: const Text('Logout')))
+        ])
       ],
-    );
+    ));
   }
 }

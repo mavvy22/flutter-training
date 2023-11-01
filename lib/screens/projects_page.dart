@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasknaut_mobile/components/tab_layout.dart';
+import 'package:tasknaut_mobile/components/tab_title.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({super.key});
@@ -6,7 +8,9 @@ class ProjectsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [Text('Projects Page')],
+      children: [
+        TabTitle(title: 'Projects Page'),
+      ],
     );
   }
 }

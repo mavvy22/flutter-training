@@ -26,7 +26,8 @@ class BootstrapPage extends HookWidget {
     }
 
     if (result.data != null) {
-      Future.delayed(const Duration(seconds: 3)).then((value) {
+      Future.delayed(const Duration(seconds: kBootstrapTransitionDuration))
+          .then((value) {
         Navigator.pushNamedAndRemoveUntil(
             context, MainPage.routeName, (route) => false);
       });
