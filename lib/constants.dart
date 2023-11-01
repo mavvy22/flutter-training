@@ -26,3 +26,27 @@ const kRegistrationGql = """
     }
   }
 """;
+
+const kCreateProjectGql = """
+  mutation createProject(\$input: CreateProjectInput!) {
+    createProject(input: \$input) {
+      id
+      name
+      tasks{
+        id
+        name
+        description
+        dueDate
+        status
+        assignee{
+          username
+          id
+        }
+      }
+      createdBy{
+        username
+        id
+      }
+    }
+  }
+""";

@@ -9,7 +9,7 @@ class ProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        TabTitle(title: 'Projects Page'),
+        TabTitle(title: 'Projects'),
       ],
     );
   }

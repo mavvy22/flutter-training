@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasknaut_mobile/components/create_project_form.dart';
 import 'package:tasknaut_mobile/screens/profile_page.dart';
 import 'package:tasknaut_mobile/screens/projects_page.dart';
 import 'package:tasknaut_mobile/screens/tasks_page.dart';
@@ -39,7 +40,7 @@ class _MainPage extends State<MainPage> {
     return Colors.white70;
   }
 
-  Widget? _createFab() {
+  Widget? _createFab(BuildContext context) {
     if (_selectedIndex == 2) {
       return null;
     }
@@ -56,7 +57,21 @@ class _MainPage extends State<MainPage> {
     }
     return FloatingActionButton.extended(
       backgroundColor: Colors.blue,
-      onPressed: () {},
+      onPressed: () {
+        showDialog(
+            context: context,
+            builder: (BuildContext ctx) {
+              return Dialog(
+                  child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [CreateProjectForm(ctx: ctx)],
+                ),
+              ));
+            });
+      },
       label: const Text('Project'),
       icon: const Icon(Icons.add),
     );
@@ -66,7 +81,7 @@ class _MainPage extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        floatingActionButton: _createFab(),
+        floatingActionButton: _createFab(context),
         body: _pages.elementAt(_selectedIndex),
         bottomNavigationBar: NavigationBar(
           backgroundColor: Theme.of(context).primaryColor,

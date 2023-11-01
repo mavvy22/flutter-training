@@ -9,7 +9,7 @@ class TasksPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TabLayout(
         child: Column(
-      children: [TabTitle(title: 'Tasks Page')],
+      children: [TabTitle(title: 'Tasks')],
     ));
   }
 }
