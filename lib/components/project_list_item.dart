@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-class ProjectListItemModel {
-  final String name = '';
-  final String id = '';
-}
-
 class ProjectListItem extends StatelessWidget {
   const ProjectListItem({super.key, required this.item});
 
@@ -12,24 +7,42 @@ class ProjectListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int taskLength = item['tasks'].length;
     return Row(children: [
       Expanded(
           child: Card(
-              margin: const EdgeInsets.all(10.0),
-              child: Padding(
-                  padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
-                  child: Column(
-                    children: [
-                      Row(
+              clipBehavior: Clip.antiAlias,
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16.0),
+              child: Column(
+                children: [
+                  Container(
+                      color: const Color.fromARGB(255, 64, 181, 175),
+                      child: Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10.0, vertical: 4.0),
+                              child: Text(
+                                item['name'],
+                                style: const TextStyle(
+                                    color: Colors.black87, fontSize: 18.0),
+                              ))
+                        ],
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10.0),
+                      child: Row(
                         children: [
                           Text(
-                            item['name'],
-                            style: const TextStyle(fontSize: 28),
+                            'Tasks: $taskLength',
+                            style: const TextStyle(color: Colors.white70),
                           )
                         ],
-                      )
-                    ],
-                  ))))
+                      ))
+                ],
+              )))
     ]);
   }
 }

@@ -29,7 +29,7 @@ class _MainPage extends State<MainPage> {
 
   Color _createIconColor(index) {
     if (index == _selectedIndex && index == 0) {
-      return Colors.blue;
+      return const Color.fromARGB(255, 20, 83, 255);
     }
     if (index == _selectedIndex && index == 1) {
       return Colors.pink;
@@ -48,15 +48,15 @@ class _MainPage extends State<MainPage> {
       return FloatingActionButton.extended(
         backgroundColor: Colors.pink,
         onPressed: () {},
-        label: const Text('Task', style: TextStyle(color: Colors.white70)),
+        label: const Text('Task', style: TextStyle(color: Colors.white)),
         icon: const Icon(
           Icons.add,
-          color: Colors.white70,
+          color: Colors.white,
         ),
       );
     }
     return FloatingActionButton.extended(
-      backgroundColor: Colors.blue,
+      backgroundColor: const Color.fromARGB(255, 20, 83, 255),
       onPressed: () {
         showDialog(
             context: context,
@@ -71,7 +71,7 @@ class _MainPage extends State<MainPage> {
                     const Row(children: [
                       Text(
                         'Create Project',
-                        style: TextStyle(color: Colors.white70, fontSize: 20),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       )
                     ]),
                     CreateProjectForm(ctx: ctx)
@@ -80,8 +80,11 @@ class _MainPage extends State<MainPage> {
               ));
             });
       },
-      label: const Text('Project'),
-      icon: const Icon(Icons.add),
+      label: const Text('Project', style: TextStyle(color: Colors.white)),
+      icon: const Icon(
+        Icons.add,
+        color: Colors.white,
+      ),
     );
   }
 

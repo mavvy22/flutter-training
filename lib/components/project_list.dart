@@ -15,7 +15,12 @@ class ProjectList extends StatelessWidget {
     List<dynamic>? data = result.data?['myProjects'];
 
     if (data == null || data.isEmpty) {
-      return const Text('No Projects found.');
+      return const SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.all(40.0),
+            child: Text('No Projects Found.'),
+          ));
     }
     return Expanded(
         child: ListView.builder(

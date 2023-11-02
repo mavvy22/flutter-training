@@ -65,7 +65,7 @@ class _CreateProjectFormState extends State<CreateProjectForm> {
                             },
                           ),
                           const SizedBox(
-                            height: 20.0,
+                            height: 30.0,
                           ),
                           FilledButton(
                               onPressed: () {
@@ -78,7 +78,10 @@ class _CreateProjectFormState extends State<CreateProjectForm> {
                                   });
                                 }
                               },
-                              child: const Text('Save'))
+                              child: const Text(
+                                'Save',
+                                style: TextStyle(fontSize: 17.0),
+                              ))
                         ],
                       ));
                 }));
