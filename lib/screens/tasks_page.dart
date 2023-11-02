@@ -7,9 +7,8 @@ class TasksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TabLayout(
-        child: Column(
+    return const Column(
       children: [TabTitle(title: 'Tasks')],
-    ));
+    );
   }
 }

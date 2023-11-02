@@ -10,7 +10,7 @@ class TabLayout extends StatelessWidget {
     return Column(children: [
       Expanded(
           child: Padding(
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
         child: child,
       ))
     ]);

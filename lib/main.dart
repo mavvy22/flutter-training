@@ -3,6 +3,7 @@ import 'package:localstorage/localstorage.dart';
 import 'package:tasknaut_mobile/screens/bootstrap_page.dart';
 import 'package:tasknaut_mobile/screens/login_page.dart';
 import 'package:tasknaut_mobile/screens/main_page.dart';
+import 'package:tasknaut_mobile/screens/project_view_page.dart';
 import 'package:tasknaut_mobile/screens/registration_page.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
             RegistrationPage.routeName: (context) => const RegistrationPage(),
             MainPage.routeName: (context) => const MainPage(),
             BootstrapPage.routeName: (context) => const BootstrapPage(),
+            ProjectViewPage.routeName: (context) => const ProjectViewPage()
           },
         ));
   }

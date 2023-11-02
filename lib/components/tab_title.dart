@@ -10,10 +10,11 @@ class TabTitle extends StatelessWidget {
       children: [
         Expanded(
             child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 12.0, horizontal: 10.0),
                 child: Text(
                   title,
-                  style: const TextStyle(fontSize: 30),
+                  style: const TextStyle(fontSize: 26.0),
                 )))
       ],
     );

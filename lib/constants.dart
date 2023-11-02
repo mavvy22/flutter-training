@@ -7,6 +7,7 @@ const kMyProfileGql = """
      myProfile {
        id
        username
+       email
      }
    }
 """;
