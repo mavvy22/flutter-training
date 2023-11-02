@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasknaut_mobile/components/update_project_form.dart';
+import 'package:tasknaut_mobile/screens/edit_project_page.dart';
 
 class ProjectDetails extends StatelessWidget {
   const ProjectDetails({super.key, required this.data});
@@ -8,8 +10,13 @@ class ProjectDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     String projectName = data['name'];
     String? description = data['description'];
+    String id = data['id'];
 
-    void handleEdit() {}
+    void handleEdit() {
+      Navigator.pushNamed(context, EditProjectPage.routeName,
+          arguments: ProjectEditArguments(id, projectName, description));
+    }
+
     void handleDelete() {}
 
     return Column(

@@ -14,7 +14,7 @@ class ProjectViewArguments {
 class ProjectViewPage extends StatelessWidget {
   const ProjectViewPage({super.key});
 
-  static String routeName = '/project/view';
+  static String routeName = '/main/projects/view';
 
   @override
   Widget build(BuildContext context) {

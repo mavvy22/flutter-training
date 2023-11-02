@@ -4,6 +4,27 @@ const kStorageKey = 'tasknaut.json';
 const kStorageItemName = 'token';
 const kBootstrapTransitionDuration = 3;
 
+const project = """
+      id
+      name
+      description
+      tasks{
+        id
+        name
+        description
+        dueDate
+        status
+        assignee{
+          username
+          id
+        }
+      }
+      createdBy{
+        username
+        id
+      }
+""";
+
 const kMyProfileGql = """
    query myProfile {
      myProfile {
@@ -33,23 +54,7 @@ const kRegistrationGql = """
 const kCreateProjectGql = """
   mutation createProject(\$input: CreateProjectInput!) {
     createProject(input: \$input) {
-      id
-      name
-      tasks{
-        id
-        name
-        description
-        dueDate
-        status
-        assignee{
-          username
-          id
-        }
-      }
-      createdBy{
-        username
-        id
-      }
+      $project
     }
   }
 """;
@@ -57,23 +62,7 @@ const kCreateProjectGql = """
 const kMyProjectsGql = """
   query myProjects {
     myProjects {
-      id
-      name
-      tasks{
-        id
-        name
-        description
-        dueDate
-        status
-        assignee{
-          username
-          id
-        }
-      }
-      createdBy{
-        username
-        id
-      }
+      $project
     }
   }
 """;
@@ -81,23 +70,15 @@ const kMyProjectsGql = """
 const kProjectByIdGql = """
   query projectById(\$input: IdInput!) {
     projectById(input: \$input) {
-      id
-      name
-      tasks{
-        id
-        name
-        description
-        dueDate
-        status
-        assignee{
-          username
-          id
-        }
-      }
-      createdBy{
-        username
-        id
-      }
+      $project
+    }
+  }
+""";
+
+const kUpdateProjectGql = """
+  mutation updateProject(\$input: UpdateProjectInput!) {
+    updateProject(input: \$input) {
+      $project
     }
   }
 """;

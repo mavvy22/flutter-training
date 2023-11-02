@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:tasknaut_mobile/constants.dart';
 import 'package:tasknaut_mobile/screens/bootstrap_page.dart';
+import 'package:tasknaut_mobile/screens/edit_project_page.dart';
 import 'package:tasknaut_mobile/screens/login_page.dart';
 import 'package:tasknaut_mobile/screens/main_page.dart';
 import 'package:tasknaut_mobile/screens/project_view_page.dart';
@@ -62,7 +63,8 @@ class MyApp extends StatelessWidget {
             RegistrationPage.routeName: (context) => const RegistrationPage(),
             MainPage.routeName: (context) => const MainPage(),
             BootstrapPage.routeName: (context) => const BootstrapPage(),
-            ProjectViewPage.routeName: (context) => const ProjectViewPage()
+            ProjectViewPage.routeName: (context) => const ProjectViewPage(),
+            EditProjectPage.routeName: (context) => const EditProjectPage()
           },
         ));
   }
