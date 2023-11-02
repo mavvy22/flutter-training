@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tasknaut_mobile/components/update_project_form.dart';
+import 'package:tasknaut_mobile/components/delete_project_action.dart';
 import 'package:tasknaut_mobile/screens/edit_project_page.dart';
 
 class ProjectDetails extends StatelessWidget {
   const ProjectDetails({super.key, required this.data});
 
   final dynamic data;
+
   @override
   Widget build(BuildContext context) {
     String projectName = data['name'];
@@ -17,7 +18,10 @@ class ProjectDetails extends StatelessWidget {
           arguments: ProjectEditArguments(id, projectName, description));
     }
 
-    void handleDelete() {}
+    void handleDelete() {
+      Scaffold.of(context).showBottomSheet(
+          (context) => DeleteProjectAction(id: id, name: projectName));
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

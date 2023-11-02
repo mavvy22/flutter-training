@@ -4,17 +4,16 @@ import 'package:tasknaut_mobile/components/styled_text_field.dart';
 import 'package:tasknaut_mobile/constants.dart';
 
 class UpdateProjectForm extends StatefulWidget {
-  const UpdateProjectForm(
-      {super.key,
-      required this.name,
-      required this.description,
-      required this.id,
-      required this.ctx});
+  const UpdateProjectForm({
+    super.key,
+    required this.name,
+    required this.description,
+    required this.id,
+  });
 
   final String name;
   final String? description;
   final String id;
-  final BuildContext ctx;
 
   @override
   State<UpdateProjectForm> createState() => _UpdateProjectFormState();
@@ -59,7 +58,7 @@ class _UpdateProjectFormState extends State<UpdateProjectForm> {
                       if (result?['updateProject'] != null) {
                         const snackBar =
                             SnackBar(content: Text('Successfully Saved'));
-                        ScaffoldMessenger.of(widget.ctx).showSnackBar(snackBar);
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       }
                     }),
                 builder: (RunMutation runMutation, result) {

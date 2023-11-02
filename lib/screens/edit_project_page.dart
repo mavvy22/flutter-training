@@ -28,7 +28,6 @@ class EditProjectPage extends StatelessWidget {
             name: args.name,
             description: args.description,
             id: args.id,
-            ctx: context,
           )),
     );
   }

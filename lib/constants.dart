@@ -82,3 +82,11 @@ const kUpdateProjectGql = """
     }
   }
 """;
+
+const kDeleteProject = """
+  mutation deleteProject(\$input: IdInput!) {
+    deleteProject(input: \$input) {
+      status
+    }
+  }
+""";

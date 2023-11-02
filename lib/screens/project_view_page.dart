@@ -43,7 +43,9 @@ class ProjectViewPage extends StatelessWidget {
                         child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: ProjectDetails(data: data)),
+                            child: ProjectDetails(
+                              data: data,
+                            )),
                       )
                     : const LinearProgressIndicator(),
               ));
