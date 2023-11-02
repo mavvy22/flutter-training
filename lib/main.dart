@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:tasknaut_mobile/constants.dart';
 import 'package:tasknaut_mobile/screens/bootstrap_page.dart';
 import 'package:tasknaut_mobile/screens/login_page.dart';
 import 'package:tasknaut_mobile/screens/main_page.dart';
@@ -19,11 +20,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    LocalStorage storage = LocalStorage('tasknaut.json');
-    HttpLink httpLink = HttpLink('http://localhost:4000/graphql');
+    LocalStorage storage = LocalStorage(kStorageKey);
+    HttpLink httpLink = HttpLink(kGraphqlLink);
 
     AuthLink authLink = AuthLink(getToken: () {
-      dynamic token = storage.getItem('token');
+      dynamic token = storage.getItem(kStorageItemName);
       if (token != null) {
         return 'Bearer $token';
       }
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         client: client,
         child: MaterialApp(
           // darkTheme: ThemeData.dark(useMaterial3: true),
-          title: 'Flutter Demo',
+          title: kAppName,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
                 background: const Color.fromARGB(255, 16, 2, 45),
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: const LoginPage(),
-          initialRoute: '/login',
+          initialRoute: LoginPage.routeName,
           routes: {
             LoginPage.routeName: (context) => const LoginPage(),
             RegistrationPage.routeName: (context) => const RegistrationPage(),

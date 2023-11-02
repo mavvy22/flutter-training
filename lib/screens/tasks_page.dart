@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tasknaut_mobile/components/tab_layout.dart';
 import 'package:tasknaut_mobile/components/tab_title.dart';
 
 class TasksPage extends StatelessWidget {

@@ -1,3 +1,5 @@
+const kAppName = 'Tasknaut';
+const kGraphqlLink = 'http://localhost:4000/graphql';
 const kStorageKey = 'tasknaut.json';
 const kStorageItemName = 'token';
 const kBootstrapTransitionDuration = 3;
@@ -55,6 +57,30 @@ const kCreateProjectGql = """
 const kMyProjectsGql = """
   query myProjects {
     myProjects {
+      id
+      name
+      tasks{
+        id
+        name
+        description
+        dueDate
+        status
+        assignee{
+          username
+          id
+        }
+      }
+      createdBy{
+        username
+        id
+      }
+    }
+  }
+""";
+
+const kProjectByIdGql = """
+  query projectById(\$input: IdInput!) {
+    projectById(input: \$input) {
       id
       name
       tasks{
