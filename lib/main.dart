@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:provider/provider.dart';
 import 'package:tasknaut_mobile/constants.dart';
+import 'package:tasknaut_mobile/models/settings.dart';
 import 'package:tasknaut_mobile/screens/bootstrap_page.dart';
 import 'package:tasknaut_mobile/screens/create_task_page.dart';
 import 'package:tasknaut_mobile/screens/edit_project_page.dart';
@@ -13,7 +15,8 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 void main() async {
   await initHiveForFlutter();
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => SettingsModel(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
