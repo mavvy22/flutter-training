@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasknaut_mobile/components/create_project_form.dart';
+import 'package:tasknaut_mobile/screens/create_task_page.dart';
 import 'package:tasknaut_mobile/screens/profile_page.dart';
 import 'package:tasknaut_mobile/screens/projects_page.dart';
 import 'package:tasknaut_mobile/screens/tasks_page.dart';
@@ -47,7 +48,9 @@ class _MainPage extends State<MainPage> {
     if (_selectedIndex == 1) {
       return FloatingActionButton.extended(
         backgroundColor: Colors.pink,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, CreateTaskPage.routeName);
+        },
         label: const Text('Task', style: TextStyle(color: Colors.white)),
         icon: const Icon(
           Icons.add,

@@ -4,11 +4,7 @@ const kStorageKey = 'tasknaut.json';
 const kStorageItemName = 'token';
 const kBootstrapTransitionDuration = 3;
 
-const project = """
-      id
-      name
-      description
-      tasks{
+const kTaskFields = """
         id
         name
         description
@@ -18,6 +14,14 @@ const project = """
           username
           id
         }
+""";
+
+const kProjectFields = """
+      id
+      name
+      description
+      tasks{
+        $kTaskFields
       }
       createdBy{
         username
@@ -54,7 +58,7 @@ const kRegistrationGql = """
 const kCreateProjectGql = """
   mutation createProject(\$input: CreateProjectInput!) {
     createProject(input: \$input) {
-      $project
+      $kProjectFields
     }
   }
 """;
@@ -62,7 +66,7 @@ const kCreateProjectGql = """
 const kMyProjectsGql = """
   query myProjects {
     myProjects {
-      $project
+      $kProjectFields
     }
   }
 """;
@@ -70,7 +74,7 @@ const kMyProjectsGql = """
 const kProjectByIdGql = """
   query projectById(\$input: IdInput!) {
     projectById(input: \$input) {
-      $project
+      $kProjectFields
     }
   }
 """;
@@ -78,7 +82,7 @@ const kProjectByIdGql = """
 const kUpdateProjectGql = """
   mutation updateProject(\$input: UpdateProjectInput!) {
     updateProject(input: \$input) {
-      $project
+      $kProjectFields
     }
   }
 """;
@@ -87,6 +91,22 @@ const kDeleteProject = """
   mutation deleteProject(\$input: IdInput!) {
     deleteProject(input: \$input) {
       status
+    }
+  }
+""";
+
+const kAddTask = """
+  mutation addTask(\$input: AddTaskInput!) {
+    addTask(input: \$input) {
+      $kTaskFields
+    }
+  }
+""";
+
+const kMyTasks = """
+  query myTasks {
+    myTasks {
+      $kTaskFields
     }
   }
 """;
