@@ -1,5 +1,6 @@
 const kAppName = 'Tasknaut';
-const kGraphqlLink = 'http://localhost:4000/graphql';
+const kGraphqlLink = 'https://tasknaut-main.onrender.com/graphql';
+// const kGraphqlLink = 'http://localhost:4000/graphql';
 const kStorageKey = 'tasknaut.json';
 const kStorageItemName = 'token';
 const kBootstrapTransitionDuration = 3;
